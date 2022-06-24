@@ -3,7 +3,7 @@ Description=Flask App
 
 [Service]
 User=jenkins
-WorkingDirectory=/home/henry/ToDo_Example
+WorkingDirectory=/home/jenkins/.jenkins/workspace/todotests
 Environment=DATABASE_URI=sqlite:///test.db
 Environment=SECRET_KEY=mister11
 ExecStart=/bin/sh \
