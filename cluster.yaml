@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo
+spec:
+  type: LoadBalancer
+  selector:
+    app: todo
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+  labels:
+    app: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+      - name: todo
+        image: rwright1992/todo:kubernetes
+        ports:
+        - containerPort: 5000
