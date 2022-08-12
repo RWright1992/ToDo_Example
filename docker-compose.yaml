@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  SFIA1:
-    image: rwright1992/sfia1:latest
+  todo:
+    image: rwright1992/todo:kubernetes
     build: ./
     ports:
     - target: 5000
